@@ -1,0 +1,15 @@
+- name: Start a container
+  docker_container:
+    name: "{{ containername }}"
+    image: "{{ imagename }}" 
+    state: started
+    devices:
+     - "/dev/sda:/dev/xvda:rwm"
+    ports:
+     - "22:222"
+     - "80:880"
+
+- name: Stop a container
+  docker_container:
+    name: "{{ containername }}"
+    state: stopped

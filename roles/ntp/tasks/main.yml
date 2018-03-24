@@ -1,0 +1,14 @@
+- name: Install NTP
+  apt: pkg=ntp state=installed update_cache=true
+  register: ntpinstalled
+  notify:
+    - Start NTP
+
+- name: Add SFH Site Config
+  when: ntpinstalled|success
+  register: ntpconfig
+  template: src=ntp.j2 dest=/etc/ntp.conf owner=root group=root
+  notify:
+    - Reload NTP
+
+- debug: msg="NTP installed successfully"

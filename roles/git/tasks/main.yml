@@ -1,0 +1,4 @@
+- name: Install GIT
+  apt: pkg=git state=installed update_cache=true
+  register: gitinstalled
+

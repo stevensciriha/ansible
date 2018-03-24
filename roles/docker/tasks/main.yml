@@ -1,0 +1,14 @@
+- name: Install Docker
+  apt: pkg=docker.io state=present
+  register: dockerinstalled
+
+- name: pull an image
+  docker_image:
+    name: pacur/centos-7
+
+- name: Pull Image
+  when: dockerinstalled|success
+  docker_image:
+   name: "{{ imagename }}"
+   notify:
+    - Start Container

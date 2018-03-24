@@ -1,0 +1,3 @@
+ntpserver2: time.google.com 
+imagename: "stevensciriha/ubuntucustom2" 
+containername: stevecontainer 
