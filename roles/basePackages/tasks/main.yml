@@ -1,0 +1,5 @@
+- name: Install Python
+  apt: pkg=python state=installed update_cache=true
+  register: pythoninstalled
+
+

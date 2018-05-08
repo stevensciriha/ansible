@@ -1,0 +1,12 @@
+- name: Deploy an instance
+  os_server:
+   state: present
+   name: testVM3 
+   image: testVM
+   key_name: sshkey
+   wait: yes
+   flavor: m1.tiny
+   auto_floating_ip: yes
+   network: admin_internal_net
+   meta:
+    hostname: lamp01.localdomain
