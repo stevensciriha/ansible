@@ -2,13 +2,22 @@
   apt: pkg=docker.io state=present
   register: dockerinstalled
 
-- name: pull an image
-  docker_image:
-    name: pacur/centos-7
-
 - name: Pull Image
   when: dockerinstalled|success
   docker_image:
    name: "{{ imagename }}"
-   notify:
-    - Start Container
+  notify:
+   - Start a container
+
+- name: Start this shit
+  docker_container:
+   name: "{{ containername }}"
+   image: "{{ imagename }}"
+   state: started
+   volumes:
+    - "/bobo:/toto:rwm"
+   ports:
+    - "222:22"
+    - "880:80"
+   interactive: yes
+   entrypoint: "/bin/bash" 

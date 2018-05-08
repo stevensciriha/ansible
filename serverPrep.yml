@@ -1,5 +1,8 @@
-- hosts: web 
+- hosts: instances 
   gather_facts: no 
+  force_handlers: true
   roles:
+#   - basePackages
 #   - ntp
-    - docker
+   - docker
+#    - heat 
